@@ -1,0 +1,29 @@
+{
+  "name": "playwright-ecommerce-automation",
+  "version": "1.0.0",
+  "description": "Playwright UI and API automation framework with POM, JavaScript, and GitHub Actions",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nara-Bayaraa/playwright-ecommerce-automation.git"
+  },
+  "keywords": [],
+  "author": "Nara Bayaraa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nara-Bayaraa/playwright-ecommerce-automation/issues"
+  },
+  "homepage": "https://github.com/Nara-Bayaraa/playwright-ecommerce-automation#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.7.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}
