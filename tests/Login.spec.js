@@ -1,7 +1,4 @@
-
 import { test, expect, request } from '@playwright/test';
-
-
 import { LoginPage } from '../pages/loginPage.js';
 
 
@@ -16,7 +13,7 @@ test.describe('Automation Exercise - Login', () => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
     await loginPage.login(VALID_EMAIL, VALID_PASSWORD);
-    await expect(loginPage.loggedInText).toBeVisible();
+   await expect(loginPage.loggedInText).toBeVisible();
     await expect(page).toHaveURL('https://www.automationexercise.com/')
   });
 
@@ -25,24 +22,15 @@ test.describe('Automation Exercise - Login', () => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
     await loginPage.login('wrong@email.com', 'wrongpassword');
-    await loginPage.emailInput.toHaveURL()
     await expect(loginPage.errorMessage).toBeVisible();
   });
 
-  test('TC03 - API verify login returns User exists', async () => {
-   
-    const apiContext = await request.newContext();
-    const response = await apiContext.post(
-      'https://www.automationexercise.com/api/verifyLogin',
-      {
-        form: {
-          email: VALID_EMAIL,
-          password: VALID_PASSWORD,
-        },
-      }
-    );
-    const body = await response.json();
-    expect(body.message).toBe('User exists!');
-  });
 
+test('TC03 - API verify login', async ({ request }) => {
+  const response = await request.post('/api/verifyLogin', {
+    form: { email: VALID_EMAIL, password: VALID_PASSWORD }
+  });
+  const body = await response.json();
+  expect(body.message).toBe('User exists!');
+});
 });
