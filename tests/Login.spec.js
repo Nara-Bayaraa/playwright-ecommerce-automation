@@ -1,5 +1,5 @@
 import { test, expect, request } from '@playwright/test';
-import { LoginPage } from '../pages/loginPage.js';
+import { LoginPage } from '../pages/LoginPage.js';
 
 
 const VALID_EMAIL = process.env.VALID_EMAIL;

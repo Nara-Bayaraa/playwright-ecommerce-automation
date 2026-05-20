@@ -4,8 +4,10 @@ constructor(page){
     this.emailInput    = page.locator('[data-qa="login-email"]');
     this.passwordInput = page.locator('[data-qa="login-password"]');
     this.loginButton   = page.locator('[data-qa="login-button"]');
+    
+    this.loggedInText  = page.locator('a:has-text(" Logged in as ")'); 
     this.errorMessage  = page.locator('p:has-text("Your email or password is incorrect!")');
-    this.loggedInText  = page.locator('a:has-text("Logged in as")'); 
+    
 }
 
 async goto() {
