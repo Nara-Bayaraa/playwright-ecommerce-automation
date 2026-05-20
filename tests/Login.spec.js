@@ -11,12 +11,13 @@ const VALID_PASSWORD = process.env.VALID_PASSWORD;
 
 test.describe('Automation Exercise - Login', () => {
 
-  test('TC01 - valid login shows logged in as username', async ({ page }) => {
+  test('TC01 - Login with valid credentials"', async ({ page }) => {
 
     const loginPage = new LoginPage(page);
     await loginPage.goto();
     await loginPage.login(VALID_EMAIL, VALID_PASSWORD);
     await expect(loginPage.loggedInText).toBeVisible();
+    await expect(page).toHaveURL('https://www.automationexercise.com/')
   });
 
   test('TC02 - invalid login shows error message', async ({ page }) => {
@@ -24,6 +25,7 @@ test.describe('Automation Exercise - Login', () => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
     await loginPage.login('wrong@email.com', 'wrongpassword');
+    await loginPage.emailInput.toHaveURL()
     await expect(loginPage.errorMessage).toBeVisible();
   });
 
